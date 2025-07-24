@@ -37,12 +37,12 @@ const services = [
   },
   {
     icon: Users,
-    title: "BTL Services",
+    title: "Social Media Growth",
     description:
-      "Dealer events, school promotions, and on-ground staff deployment for direct engagement.",
+      "Build authentic relationships with  your business buyers in your area.",
     expandedText:
-      "Below-the-line activations including dealer engagement events, educational institution promotions, targeted activation campaigns, and professional on-ground staff deployment for maximum impact.",
-    color: "from-accent to-primary",
+      "Strategic content creation, community building, and influencer partnerships specifically designed for the  your business ecosystem in India.",
+    color: "from-purple-500 to-pink-500",
   },
   {
     icon: Camera,
@@ -54,13 +54,13 @@ const services = [
     color: "from-secondary to-primary",
   },
   {
-    icon: MapPin,
-    title: "Onsite Campaigns",
+    icon: Globe,
+    title: "Website Development",
     description:
-      "Mobile van branding, product demos, and festive event promotions with feedback systems.",
+      "High-converting, mobile-first websites optimized for  your business sales.",
     expandedText:
-      "On-location marketing activations including branded mobile van campaigns, live product demonstrations, festive event promotions, and comprehensive survey and feedback collection systems.",
-    color: "from-primary to-accent",
+      "Custom-built dealership websites with advanced search, inventory management, and lead capture forms optimized for  your business specifications.",
+    color: "from-indigo-500 to-blue-500",
   },
   {
     icon: BarChart3,
@@ -144,7 +144,7 @@ function ServiceCard({
           whileHover={{ scale: 1.1, rotate: 5 }}
           transition={{ duration: 0.3 }}
         >
-          <service.icon className="w-8 h-8 text-white" />
+          <service.icon className="w-8 h-8 text-white !opacity-100 !brightness-100 !contrast-100 !saturate-100" />
         </motion.div>
 
         {/* Content */}
