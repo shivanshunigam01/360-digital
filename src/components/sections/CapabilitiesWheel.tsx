@@ -10,7 +10,7 @@ const capabilities = [
     title: "ATL",
     description: "Traditional Media",
     details:
-      "TV commercials, radio campaigns, print advertisements, and outdoor advertising for maximum reach and brand awareness.",
+      "TV commercials, radio campaigns, print advertisements, and outdoor advertising for brand awareness.",
     color: "from-blue-500 to-purple-600",
   },
   {
