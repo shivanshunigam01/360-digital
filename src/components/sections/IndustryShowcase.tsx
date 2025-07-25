@@ -14,7 +14,7 @@ const industries = [
   {
     icon: Car,
     title: "Automotive",
-    description: "Commercial vehicles, dealerships, and automotive services",
+    description: "Automotive Business, Distribution, Dealership and Workshops",
     insights:
       "Lead generation strategies tailored for vehicle sales and service centers",
     color: "from-primary to-secondary",

@@ -11,8 +11,13 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import { useTheme } from "./ThemeProvider";
 
 export function Header() {
+  const { theme } = useTheme();
+  const lightLogo = "/favicon.ico";
+  const darkLogo = "/dark-logo.ico";
+
   return (
     <motion.header
       className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10 backdrop-blur-xl"
@@ -24,9 +29,9 @@ export function Header() {
         <div className="flex items-center justify-between h-20">
           <Link to="/">
             <img
-              src="/favicon.ico"
+              src={theme === "dark" ? darkLogo : lightLogo}
               alt="Elevate360 Logo"
-              className="h-10 w-50 logo-image"
+              className="h-10 w-auto logo-image transition-all duration-300"
             />
           </Link>
 
