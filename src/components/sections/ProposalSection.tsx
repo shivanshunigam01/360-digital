@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Shield } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export function ProposalSection() {
   const [ref, inView] = useInView({
@@ -92,14 +93,15 @@ export function ProposalSection() {
                   <span>Your information is protected and secure</span>
                 </div>
 
-                <Button
-                  type="button"
-                  size="lg"
-                  className="magnetic-hover pulse-glow bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white border-none text-lg px-12 py-6 rounded-xl"
-                  onClick={() => (window.location.href = "/proposal")}
-                >
-                  GET FREE PROPOSAL
-                </Button>
+                <Link to="/proposal">
+                  <Button
+                    type="button"
+                    size="lg"
+                    className="magnetic-hover pulse-glow bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white border-none text-lg px-12 py-6 rounded-xl"
+                  >
+                    GET FREE PROPOSAL
+                  </Button>
+                </Link>
               </div>
             </form>
           </div>
