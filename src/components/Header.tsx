@@ -31,7 +31,7 @@ export function Header() {
             <img
               src={theme === "dark" ? darkLogo : lightLogo}
               alt="Elevate360 Logo"
-              className="h-10 w-auto logo-image transition-all duration-300"
+              className="h-10 w-70 logo-image transition-all duration-300"
             />
           </Link>
 
