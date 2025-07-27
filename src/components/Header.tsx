@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ThemeToggle } from "@/components/ThemeToggle";
+import { ThemeSelector } from "@/components/ThemeSelector";
 import { Button } from "@/components/ui/button";
 import { Phone, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -20,7 +20,7 @@ export function Header() {
 
   return (
     <motion.header
-      className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10 backdrop-blur-xl"
+      className="fixed top-0 left-0 right-0 z-[100] glass border-b border-white/10 backdrop-blur-xl"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
@@ -29,7 +29,7 @@ export function Header() {
         <div className="flex items-center justify-between h-20">
           <Link to="/">
             <img
-              src={theme === "dark" ? darkLogo : lightLogo}
+              src={theme === "dark" || "creative" ? darkLogo : lightLogo}
               alt="Elevate360 Logo"
               className="h-10 w-70 logo-image transition-all duration-300"
             />
@@ -56,7 +56,7 @@ export function Header() {
                     About
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <div className="min-w-[400px] w-[400px] p-6 glass border border-white/10 bg-background/95 backdrop-blur-md">
+                    <div className="min-w-[400px] w-[400px] p-6 glass border border-white/10 bg-background/95 backdrop-blur-md z-[110]">
                       <NavigationMenuLink asChild>
                         <Link
                           to="/about"
@@ -89,7 +89,7 @@ export function Header() {
                     Services
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <div className="min-w-[700px] w-[700px] p-6 glass border border-white/10 bg-background/95 backdrop-blur-md grid grid-cols-2 gap-6">
+                    <div className="min-w-[700px] w-[700px] p-6 glass border border-white/10 bg-background/95 backdrop-blur-md grid grid-cols-2 gap-6 z-[110]">
                       <div className="space-y-3">
                         <h4 className="font-semibold mb-4 text-gradient flex items-center">
                           <div className="w-2 h-2 bg-primary rounded-full mr-2"></div>
@@ -181,7 +181,7 @@ export function Header() {
                     Industries
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <div className="min-w-[550px] w-[550px] p-6 glass border border-white/10 bg-background/95 backdrop-blur-md grid grid-cols-2 gap-4">
+                    <div className="min-w-[550px] w-[550px] p-6 glass border border-white/10 bg-background/95 backdrop-blur-md grid grid-cols-2 gap-4 z-[110]">
                       <NavigationMenuLink asChild>
                         <Link
                           to="/industries"
@@ -292,10 +292,10 @@ export function Header() {
           </div>
 
           <div className="flex items-center gap-4">
-            <ThemeToggle />
+            <ThemeSelector />
             <Button
               size="sm"
-              className="magnetic-hover bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white border-none shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+              className="text-foreground hover:text-primary px-4 py-2 rounded-lg transition-all duration-300 hover:bg-accent/50"
               asChild
             >
               <Link to="/contact">

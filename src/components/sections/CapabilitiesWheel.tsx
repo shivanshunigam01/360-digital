@@ -11,7 +11,6 @@ const capabilities = [
     description: "Traditional Media",
     details:
       "TV commercials, radio campaigns, print advertisements, and outdoor advertising for brand awareness.",
-    color: "from-blue-500 to-purple-600",
   },
   {
     id: "btl",
@@ -20,7 +19,6 @@ const capabilities = [
     description: "Below The Line",
     details:
       "Direct marketing, events, promotions, and targeted campaigns for specific audience engagement.",
-    color: "from-purple-600 to-pink-500",
   },
   {
     id: "digital",
@@ -29,7 +27,6 @@ const capabilities = [
     description: "Online Presence",
     details:
       "SEO, social media, PPC advertising, email marketing, and comprehensive digital strategies.",
-    color: "from-green-500 to-blue-500",
   },
   {
     id: "onsite",
@@ -38,7 +35,6 @@ const capabilities = [
     description: "Ground Activations",
     details:
       "Mobile campaigns, product demonstrations, field marketing, and on-location brand activations.",
-    color: "from-green-400 to-teal-500",
   },
   {
     id: "reels",
@@ -47,7 +43,6 @@ const capabilities = [
     description: "Content Creation",
     details:
       "Video production, social media content, reels creation, and visual storytelling for maximum engagement.",
-    color: "from-teal-500 to-cyan-500",
   },
   {
     id: "analytics",
@@ -56,20 +51,20 @@ const capabilities = [
     description: "Data Insights",
     details:
       "Performance tracking, ROI analysis, customer insights, and data-driven optimization strategies.",
-    color: "from-cyan-500 to-blue-500",
   },
 ];
 
 export default function CapabilitiesWheel() {
-  const [activeCapability, setActiveCapability] = useState(null);
+  const [activeCapability, setActiveCapability] = useState<string | null>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [currentTheme, setCurrentTheme] = useState("dark"); // Default theme
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 100);
     return () => clearTimeout(timer);
   }, []);
 
-  const getNodePosition = (index, total, radius = 220) => {
+  const getNodePosition = (index: number, total: number, radius = 220) => {
     const angle = (index * 2 * Math.PI) / total - Math.PI / 2;
     return {
       x: Math.cos(angle) * radius,
@@ -77,9 +72,38 @@ export default function CapabilitiesWheel() {
     };
   };
 
+  // Determine if current theme requires black icons
+  const isLightTheme = ["light", "professional", "minimal"].includes(
+    currentTheme.toLowerCase()
+  );
+
+  const iconClasses = "text-foreground group-hover:text-primary";
+  const iconBackgroundClasses = isLightTheme
+    ? "bg-gray-100 border border-gray-300"
+    : "bg-gradient";
+
   return (
-    <div className="min-h-screen bg-white dark:bg-[#101B20] text-gray-900 dark:text-white p-8 transition-colors duration-300">
+    <div className="min-h-screen p-8 transition-colors duration-300 bg-background text-foreground">
       <div className="max-w-7xl mx-auto">
+        {/* Theme Selector
+        <div className="flex justify-center mb-8">
+          <div className="flex gap-2 p-2 bg-muted rounded-lg">
+            {["Dark", "Light", "Professional", "Minimal"].map((theme) => (
+              <button
+                key={theme}
+                onClick={() => setCurrentTheme(theme)}
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+                  currentTheme === theme.toLowerCase()
+                    ? "bg-primary text-primary-foreground"
+                    : "hover:bg-muted-foreground/10"
+                }`}
+              >
+                {theme}
+              </button>
+            ))}
+          </div>
+        </div> */}
+
         {/* Header */}
         <div
           className={`text-center mb-16 transition-all duration-1000 ${
@@ -96,6 +120,10 @@ export default function CapabilitiesWheel() {
             capability to explore detailed strategies and implementation
             approaches.
           </p>
+          {/* <p className="text-sm text-muted-foreground mt-4">
+            Current theme:{" "}
+            <span className="font-semibold capitalize">{currentTheme}</span>
+          </p> */}
         </div>
 
         {/* Wheel */}
@@ -151,14 +179,14 @@ export default function CapabilitiesWheel() {
                   onMouseLeave={() => setActiveCapability(null)}
                 >
                   <div
-                    className={`w-32 h-32 glass rounded-full flex flex-col items-center justify-center transition-all duration-300 shadow-lg ${
+                    className={`w-32 h-32 glass rounded-full flex flex-col items-center justify-center transition-all duration-300 shadow-glow ${
                       activeCapability === cap.id
-                        ? "shadow-2xl border border-cyan-400"
+                        ? "border border-accent"
                         : "border border-muted"
                     }`}
                   >
                     <div
-                      className={`w-12 h-12 rounded-full p-3 mb-2 shadow-md text-white bg-gradient-to-r ${cap.color}`}
+                      className={`w-12 h-12 rounded-full p-3 mb-2 shadow-md ${iconClasses} ${iconBackgroundClasses}`}
                     >
                       <IconComponent className="w-full h-full" />
                     </div>
@@ -170,10 +198,10 @@ export default function CapabilitiesWheel() {
                     </p>
                   </div>
 
-                  {/* Floating Detail Tooltip */}
+                  {/* Tooltip */}
                   {activeCapability === cap.id && (
                     <div
-                      className="absolute w-64 glass p-4 rounded-xl shadow-2xl border border-muted z-50"
+                      className="absolute w-64 glass p-4 rounded-xl shadow-xl border border-muted z-50"
                       style={{
                         top: "50%",
                         left: x >= 0 ? "calc(100% + 20px)" : "auto",
