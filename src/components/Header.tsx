@@ -80,6 +80,12 @@ export function Header() {
                           Join our team
                         </div>
                       </NavigationMenuLink>
+                      <NavigationMenuLink className="block p-3 hover:bg-accent/70 rounded-lg transition-all duration-300 border border-transparent hover:border-white/20 cursor-pointer">
+                        <div className="font-medium">Testimonials</div>
+                        <div className="text-sm text-muted-foreground">
+                          Join our team
+                        </div>
+                      </NavigationMenuLink>
                     </div>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
